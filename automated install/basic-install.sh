@@ -327,10 +327,10 @@ $SUDO rm /var/www/master.zip 2>/dev/null
 $SUDO echo "::: ...Done."
 
 $SUDO echo "::: Creating log file and changing owner to dnsmasq..."
-if [ ! -f /var/log/pihole.log ]; then
-	$SUDO touch /var/log/pihole.log
-	$SUDO chmod 644 /var/log/pihole.log
-	$SUDO chown dnsmasq:root /var/log/pihole.log
+if [ ! -f /dev/shm/pihole.log ]; then
+	$SUDO touch /dev/shm/pihole.log
+	$SUDO chmod 644 /dev/shm/pihole.log
+	$SUDO chown dnsmasq:root /dev/shm/pihole.log
 else
 	$SUDO echo "::: No need to create, already exists!"
 fi
