@@ -23,4 +23,4 @@
 
 # Pi-hole: Flush the log daily at 11:58 so it doesn't get out of control
 #          Stats will be viewable in the Web interface thanks to the cron job above
-58 23   * * *   root    /usr/local/bin/piholeLogFlush.sh
+*/15 *   * * *   root    /usr/local/bin/piholeLogFlush.sh
