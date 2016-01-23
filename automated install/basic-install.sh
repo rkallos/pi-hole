@@ -300,15 +300,11 @@ $SUDO echo "::: ...done."
 $SUDO echo "::: Installing dnsmasq..."
 $SUDO apt-get -yqq install dnsmasq & spinner $!
 $SUDO echo "::: ...done."
-$SUDO echo "::: Installing lighttpd, php5-common, php5-cgi, php5, and php5-mysql..."
-$SUDO apt-get -yqq install lighttpd php5-common php5-cgi php5 php5-mysql & spinner $!
+$SUDO echo "::: Installing lighttpd, php5-common, php5-cgi, php5, and php5-sqlite..."
+$SUDO apt-get -yqq install lighttpd php5-common php5-cgi php5 php5-sqlite & spinner $!
 $SUDO echo "::: ...done."
-$SUDO echo "::: Installing mysql-server..."
-# Lets mysql-server be isntalled without prompting for a password creation
-# Must be run before mysql-server is installed
-echo mysql-server mysql-server/root_password password raspberry | sudo debconf-set-selections
-echo mysql-server mysql-server/root_password_again password raspberry | sudo debconf-set-selections
-$SUDO apt-get -yqq mysql-server & spinner $!
+$SUDO echo "::: Installing sqlite..."
+$SUDO apt-get -yqq sqlite & spinner $!
 $SUDO echo "::: ...done."
 $SUDO echo "::: Installing git..."
 $SUDO apt-get -yqq install git & spinner $!

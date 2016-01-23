@@ -8,4 +8,4 @@
 #the Free Software Foundation, either version 2 of the License, or
 #(at your option) any later version.
 
-truncate -s 0 /var/log/pihole.log
+truncate -s 0 /dev/shm/pihole.log

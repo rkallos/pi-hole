@@ -9,7 +9,7 @@
 
 
 #Functions##############################################################################################################
-piLog="/var/log/pihole.log"
+piLog="/dev/shm/pihole.log"
 gravity="/etc/pihole/gravity.list"
 
 today=$(date "+%b %e")
