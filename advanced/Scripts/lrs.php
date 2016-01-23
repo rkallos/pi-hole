@@ -7,14 +7,16 @@ date_default_timezone_set('UTC');
 //config
 
 $info_DEBUG = true;
-$file_name = "/var/log/pihole.log";
+$file_name = "/dev/shm/pihole.log";
 $pie_chart_regexp_query = "query";
 $pie_chart_regexp_adver = ": /etc/pihole/gravity.list";
 
-$db_host = "localhost";
-$db_name = "charts";
-$db_user = "root";
-$db_pass = "hi";
+//$db_host = "localhost";
+//$db_name = "charts";
+//$db_user = "root";
+//$db_pass = "hi";
+$db_file = "/usr/local/bin/piholestats.db";
+$db = new SQLite3($db_file);
 
 //---------------------------------------------------------------------------------------------------
 //logging
@@ -51,7 +53,7 @@ function update_top_chart_stats($db_conn, $top_chart_array, $pie_chart_date) {
 	$top_sorted = array_count_values($top_chart_array);
 	foreach ($top_sorted as $top_id => $value) {
 		$sql_replace_top_chart_stats = "REPLACE INTO top_chart_stats VALUES ('$pie_chart_date', '$top_id', $value)";
-		if (!mysqli_query($db_conn, $sql_replace_top_chart_stats)) {
+		if (!SQLite3::query($db_conn, $sql_replace_top_chart_stats)) {
 			errorlog("SQL query failed for some reason: $sql_replace_top_chart_stats");
 		}else{
 			debuglog("SQL query successfully executed: $sql_replace_top_chart_stats");
