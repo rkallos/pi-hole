@@ -97,7 +97,7 @@ if (!file_exists($file_name)) {
 	debuglog("Trying to read and parse log file ".$file_name);
 }
 
-$pie_chart_date = date("Y-m-d");
+$pie_chart_date = date("Y-m-d H:i:s");
 $pie_chart_count_query = 0;
 $pie_chart_count_adver = 0;
 debuglog("Current date == ".$pie_chart_date);
