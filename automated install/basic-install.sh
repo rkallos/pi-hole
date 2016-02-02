@@ -147,7 +147,6 @@ chooseInterface() {
 	fi
 }
 
-
 use4andor6() {
 	# Let use select IPv4 and/or IPv6
 	cmd=(whiptail --separate-output --checklist "Select Protocols" $r $c 2)

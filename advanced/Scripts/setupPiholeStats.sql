@@ -21,3 +21,4 @@ CREATE TABLE `top_chart_stats` (
 );
 
 -- TODO: Create database indexes for faster querying
+
