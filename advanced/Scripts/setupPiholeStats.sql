@@ -19,3 +19,5 @@ CREATE TABLE `top_chart_stats` (
 	`cnt` INTEGER NOT NULL, -- advertiser count appearance
 	PRIMARY KEY (`insert_date`, `adver_name`)
 );
+
+-- TODO: Create database indexes for faster querying
