@@ -471,7 +471,7 @@ CreateLogFile() {
 	# Create logfiles if necessary
 	echo ":::"
 	$SUDO  echo -n "::: Creating log file and changing owner to dnsmasq..."
-	if [ ! -f /var/log/pihole.log ]; then
+	if [ ! -f /dev/shm/pihole.log ]; then
 		$SUDO touch /dev/shm/pihole.log
 		$SUDO chmod 644 /dev/shm/pihole.log
 		$SUDO chown dnsmasq:root /dev/shm/pihole.log

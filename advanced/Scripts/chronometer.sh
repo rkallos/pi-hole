@@ -86,13 +86,13 @@ function normalChrono(){
 		uptime | cut -d' ' -f11-
 		echo "-------------------------------"
 		# Uncomment to continually read the log file and display the current domain being blocked
-		#tail -f /var/log/pihole.log | awk '/\/etc\/pihole\/gravity.list/ {if ($7 != "address" && $7 != "name" && $7 != "/etc/pihole/gravity.list") print $7; else;}'
+		#tail -f /dev/shm/pihole.log | awk '/\/etc\/pihole\/gravity.list/ {if ($7 != "address" && $7 != "name" && $7 != "/etc/pihole/gravity.list") print $7; else;}'
 		
 		#uncomment next 4 lines to use original query count calculation
 		#today=$(date "+%b %e")
-		#todaysQueryCount=$(cat /var/log/pihole.log | grep "$today" | awk '/query/ {print $7}' | wc -l)
-		#todaysQueryCountV4=$(cat /var/log/pihole.log | grep "$today" | awk '/query/ && /\[A\]/ {print $7}' | wc -l)
-		#todaysQueryCountV6=$(cat /var/log/pihole.log | grep "$today" | awk '/query/ && /\[AAAA\]/ {print $7}' | wc -l)
+		#todaysQueryCount=$(cat /dev/shm/pihole.log | grep "$today" | awk '/query/ {print $7}' | wc -l)
+		#todaysQueryCountV4=$(cat /dev/shm/pihole.log | grep "$today" | awk '/query/ && /\[A\]/ {print $7}' | wc -l)
+		#todaysQueryCountV6=$(cat /dev/shm/pihole.log | grep "$today" | awk '/query/ && /\[AAAA\]/ {print $7}' | wc -l)
 				
 		
 		CalcQueriesToday
