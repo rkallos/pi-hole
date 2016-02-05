@@ -15,7 +15,7 @@ $pie_chart_regexp_adver = ": /etc/pihole/gravity.list";
 //$db_name = "charts";
 //$db_user = "root";
 //$db_pass = "hi";
-$db_file = "piholestats.db";
+$db_file = "/var/lib/pihole/stats.db";
 
 //---------------------------------------------------------------------------------------------------
 //logging
@@ -69,7 +69,7 @@ function update_pie_chart_stats($db, $pie_chart_date, $pie_chart_count_query, $p
 		debuglog("SQL query successfully executed: $sql_insert_pie_chart_stats");
 	}
 	//total calc
-	$sql_select_pie_chart_stats  = "SELECT SUM(query_cnt) AS q_cnt, SUM(adver_cnt) AS a_cnt FROM pie_chart_stats WHERE insert_date != '0000-00-00'";
+	$sql_select_pie_chart_stats  = "SELECT SUM(query_cnt) AS q_cnt, SUM(adver_cnt) AS a_cnt FROM pie_chart_stats WHERE insert_date != '0000-00-00 00:00:00'";
 	if ($res_select_pie_chart_stats = $db->query($sql_select_pie_chart_stats)) {
 		$arr_select_pie_chart_stats = $res_select_pie_chart_stats->fetchArray();
 		$total_query = $arr_select_pie_chart_stats['q_cnt'];
@@ -78,7 +78,7 @@ function update_pie_chart_stats($db, $pie_chart_date, $pie_chart_count_query, $p
 		errorlog("SQL query failed for some reason: $sql_select_pie_chart_stats");
 	}
 	//total update
-	$sql_update_pie_chart_stats = "UPDATE pie_chart_stats SET query_cnt = $total_query, adver_cnt = $total_adver WHERE insert_date = '0000-00-00'";
+	$sql_update_pie_chart_stats = "UPDATE pie_chart_stats SET query_cnt = $total_query, adver_cnt = $total_adver WHERE insert_date = '0000-00-00 00:00:00'";
 	if (!$db->query($sql_update_pie_chart_stats)) {
 		errorlog("SQL query failed for some reason: $sql_update_pie_chart_stats");
 	}else{
@@ -120,7 +120,7 @@ debuglog("Total amount of 'query' regexp for ".$pie_chart_date." == ".$pie_chart
 debuglog("Total amount of 'adver' regexp for ".$pie_chart_date." == ".$pie_chart_count_adver);
 
 //---------------------------------------------------------------------------------------------------
-//mysql
+//sqlite3
 
 debuglog("** Trying to connect to Sqlite3 database");
 if ($db = new SQLite3($db_file)) {
